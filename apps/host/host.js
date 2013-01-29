@@ -25,6 +25,7 @@ var uID;
 
 partyplayer.main = {};
 partyplayer.funnel = {};
+partyplayer.player = {};
 
 partyplayer.main.onjoin = function(params, ref, from) {
     uID = pc.addUser(params); //registration on application level
@@ -103,6 +104,28 @@ partyplayer.funnel.onvote = function (params, ref, from) {
 partyplayer.funnel.removeFunnelItem = function (funnelItemID) {
     partyplayer.sendMessage({ns:"funnel", cmd:"removeFunnelItem", params:{funnelItemID:funnelItemID}});
 };
+
+
+partyplayer.player.updateItem = function () {
+    log("updating item");
+    partyplayer.sendMessage({ns:"player", cmd:"itemUpdate", params:{nowPlaying:{title:"test"}, nextItem:{title:"test2"}}}); 
+}
+
+
+partyplayer.player.startScreencast = function () {
+    log("starting screencast");
+    
+}
+
+partyplayer.player.startStream = function () {
+    log("starting broadcast");
+    partyplayer.sendMessage({ns:"player", cmd:"streamUpdate", params:{enabled:"True", streams:{oggSource:"http://127.0.0.1:8888/ogg"}, mp3Source:"http://127.0.0.1:8888/ogg"}}); 
+}
+
+partyplayer.player.stopStream = function () {
+    log("stopping broadcast");
+    partyplayer.sendMessage({ns:"player", cmd:"streamUpdate", params:{enabled:"False"}}); 
+}
 
 function updateUsers(){
     players = pc.getUsers();

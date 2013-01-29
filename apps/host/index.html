@@ -37,6 +37,7 @@ Authors Victor Klos, Martin Prins
         <script type=text/javascript src=host.js></script>
         <script type=text/javascript src=player.js></script>
 	    <script type=text/javascript src=visual.js></script>
+	    <script type=text/javascript src=screencast.js></script>
     </head>
     <body>
         <div id="TNOLogo"><img width="110px" height="20px" src="../../library/logo/logo-TNO.gif" /></div>
@@ -48,6 +49,34 @@ Authors Victor Klos, Martin Prins
 	
 	    <div id="player">
 	    </div>
+	    
+	    
+	    <div id="screencast">
+	        <table border="1" style="height: 100%; width: 100%;">
+		        <tr valign="top">
+			        <td width="50%">
+				        <div id="commands">
+					        Select from the list Available PZP & PZH to find Service
+					        <select id="pzh_pzp_list"> <option> </option> </select>
+					        <button id="findService">Find Service</button>
+					        <!--<button id="addEventListener">addEventListener:
+						        channelchange</button>!-->
+					        <button id="getTVSources">getTVSources</button>
+					        <!--<button id="getEPGPIC">getEPGPIC</button>!-->
+					        <ul id="channels">
+
+
+					        </ul>
+				        </div></td>
+			        <td width="50%">
+				        <div>
+					        <ul id="messages">
+					        </ul>
+				        </div></td>
+		        </tr>
+	        </table>
+	    </div>
+	    
     </body>
 </html>
 
