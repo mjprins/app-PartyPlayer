@@ -94,6 +94,7 @@ partyplayer.voteFunnelItem = function(funnelItemID){
 
 partyplayer.main = {};
 partyplayer.funnel = {};
+partyplayer.player = {};
 partyplayer.main.onwelcome = function(param, ref) {
     userProfile.userID = param.userID;
     log('onwelcome invoked! userID = '+ userProfile.userID); 
@@ -269,6 +270,31 @@ partyplayer.funnel.onremoveFunnelItem = function (param, ref) {
     
     $('.funnel[funnelItemID=' +param.funnelItemID+']').remove();
 }
+
+
+
+function updateSource(source, src) {
+    var source = $(source);
+
+    source.attr('src', src).appendTo(source.parent());
+}
+
+partyplayer.player.onstreamUpdate = function (param, ref) {
+    log ('onstreamUpdate Invoked on player')
+    if (param.enabled == "True"){
+        log("item enabled");
+        $('#streamStatus').text("Online");
+        for (item in param.streams){
+            log(item +"" +param.streams[item]);
+            updateSource($("#oggSource"),param.streams[item]);
+        }    
+    }
+    else {
+        $('#streamStatus').text("Offline");
+        
+    }
+}
+
 
 
 //Opening screen select profile
